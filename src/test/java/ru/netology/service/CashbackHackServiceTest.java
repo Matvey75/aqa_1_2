@@ -7,12 +7,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class CashbackHackServiceTest {
 
     @Test
-    void shouldReturn1000IfAmountIs0() {
+    void shouldThrowIfAmountIs0() {
         CashbackHackService cashback = new CashbackHackService();
         int amount = 0;
-        int actual = cashback.remain(amount);
-        int expected = 1000;
-        assertEquals(expected, actual);
+        assertThrows(IllegalArgumentException.class,
+                () -> cashback.remain(amount)
+        );
     }
 
     @Test
